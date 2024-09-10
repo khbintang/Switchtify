@@ -19,7 +19,9 @@
 - [ X ] Membuat model pada aplikasi `main` dengan nama `Product` dan memiliki atribut wajib sebagai berikut.
   - `name`
   - `price`
-  - `description`
+  - `type`
+  - 'sound_profile'
+  - 'lube'
   1. Mengubah berkas models.py dengan mengisinya classnya dengan nama, harga, dan deskripsi produk
 
 - [ X ] Membuat sebuah fungsi pada `views.py` untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.

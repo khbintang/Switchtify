@@ -1,14 +1,114 @@
-<h1> SWITCHTIFY</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} - Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-...
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Price: </h5>
-<p>{{ price }}<p>
-<h5>Type: </h5>
-<p>{{ type }}<p>
-<h5>Sound Profile :  </h5>
-<p>{{sound_profile}}</p>
-<h5>Lube :</h5>
-<p>{{lube}}</p>
-...
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h5 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 1.5em;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .type {
+            font-style: italic;
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="store-name">SWITCHTIFY</div>
+        <nav>
+            <a href="#">Browse</a>
+            <a href="#">Cart</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>{{ name }}</h2>
+        <img src="{{ image_url }}" alt="{{ name }}">
+
+        <h5>Description:</h5>
+        <p>{{ description }}</p>
+
+        <h5>Price:</h5>
+        <p class="price">{{ price }}</p>
+
+        <h5>Type:</h5>
+        <p class="type">{{ type }}</p>
+
+        <h5>Sound Profile:</h5>
+        <p>{{ sound_profile }}</p>
+    </div>
+</body>
+</html>

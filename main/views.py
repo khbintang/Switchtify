@@ -1,14 +1,14 @@
 from django.shortcuts import render
+from .models import Product
 
-def show_main(request):
+def product_detail(request):
+    product = Product.objects.first()  # Get the product object, replace with your logic
     context = {
-        'name' : 'Gateron Linear Fizzy Oil Keyboard Switch ',
-        'price': 'Rp 8.000 / piece',
-        'type' : ' Linear',
-        'sound_profile' : 'Loud clacky, almost marbly',
-        'lube': 'Factory lubed'
+        'name': product.name,
+        'description': product.description,
+        'price': product.price,
+        'type': product.type,
+        'sound_profile': product.sound_profile,
+        'image_url': product.image.url,  # assuming image field exists
     }
-
-    return render(request, "main.html", context)
-
-# Create your views here.
+    return render(request, 'main.html', context)
