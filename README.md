@@ -13,6 +13,7 @@
 - [ X ] Membuat aplikasi dengan nama `main` pada proyek tersebut.
 1. Menjalankan perintah python manage.py startapp main dann membuat aplikasi main pada proyek Switchtify dan mendaftarkan aplikasi main kedalam proyek Switchtify dengan menambahkan main kedalam INSTALLED_APPS dalam settings.py
 2. Menambahkan main.html dalam folder templates yang berada pada main
+3. Mengubah html agar dapat muncul header dan gambar produk
 
 - [ X ] Melakukan routing pada proyek agar dapat menjalankan aplikasi `main`.
 
@@ -20,44 +21,52 @@
   - `name`
   - `price`
   - `type`
-  - 'sound_profile'
-  - 'lube'
-  1. Mengubah berkas models.py dengan mengisinya classnya dengan nama, harga, dan deskripsi produk
+  - 'sound
+  1. Mengubah berkas models.py dengan mengisinya classnya dengan nama, harga, deskripsi produk, tupe, dan profil produk
 
 - [ X ] Membuat sebuah fungsi pada `views.py` untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
 1. Menambahkan context dengan isi nama, harga, dan deskripsi produk dalam views.py
+2. Melakukan add product dengan mengakses django admin interface dengan membuat product dengan isi name, description, price, type, dan sound_profile
 
 - [ X ] Membuat sebuah routing pada `urls.py` aplikasi `main` untuk memetakan fungsi yang telah dibuat pada `views.py`.
 1. Membuat berkas urls.py dalam direktori main dan mengisi kodenya dengan rute url untuk mengarahkan ke tampilan main di dalam variabel urlpatterns
 
 - [ X ] Melakukan deployment ke PWS terhadap aplikasi yang sudah di-deploy sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
 1. Membuat project baru lagi di PWS dengan nama switchtify lalu mendeploy ke project tersebut.
+2. Mendeploy kembali project saya
+
 
 - [ X ] Membuat sebuah `README.md` yang berisi tautan menuju aplikasi PWS yang sudah di-deploy, serta jawaban dari beberapa pertanyaan berikut.
   - Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara **step-by-step** (bukan hanya sekadar mengikuti tutorial).
     Sudah saya tulis di atas di tiap checkpoint
 
   - Buatlah bagan yang berisi *request client* ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara `urls.py`, `views.py`, `models.py`, dan berkas *html*.
-  1. Client Request
-   |
-   V
-  2. urls.py (Mencocokkan URL yang diminta dengan pola yang sesuai)
-   |
-   V
-  3. views.py (Menangani logika aplikasi, memanggil models jika diperlukan)
-   |
-   V
-  4. models.py (Mengambil atau memproses data dari/ke database)
-   |
-   V
-  5. views.py (Mengirimkan data ke template HTML)
-   |
-   V
-  6. HTML Template (Merender data ke dalam bentuk tampilan yang diinginkan)
-   |
-   V
-  7. Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
+  
+Client Request
+         |
+         V
 
+urls.py (Mencocokkan URL yang diminta dengan pola yang sesuai)
+         |
+         V
+
+views.py (Menangani logika aplikasi, memanggil models jika diperlukan)
+         |
+         V
+
+models.py (Mengambil atau memproses data dari/ke database)
+         |
+         V
+
+views.py (Mengirimkan data ke template HTML)
+         |
+         V
+
+HTML Template (Merender data ke dalam bentuk tampilan yang diinginkan)
+         |
+         V
+
+Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
 
   - Jelaskan fungsi `git` dalam pengembangan perangkat lunak!
     Fungsi Git adalah untuk keep track antar perubahan pada program dan memungkinkan kita untuk menyimpan tiap versi kode
