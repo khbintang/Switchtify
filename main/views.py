@@ -1,20 +1,19 @@
 from django.shortcuts import render
 from .models import Product
 
-# Product detail view
+
 def product_detail(request):
-    product = Product.objects.first()  # Get the product object, replace with your logic
+    product = Product.objects.first()  
     context = {
         'name': product.name,
         'description': product.description,
         'price': product.price,
         'type': product.type,
         'sound_profile': product.sound_profile,
-        'image_url': product.image.url,  # assuming image field exists
+        'image_url': product.image.url,  
     }
     return render(request, 'main.html', context)
 
-# About app view
 def about_app(request):
     context = {
         'app_name': 'Switchtify',  # Nama aplikasimu
