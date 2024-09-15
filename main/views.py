@@ -2,17 +2,16 @@ from django.shortcuts import render
 from .models import Product
 
 
+from django.shortcuts import render
+from .models import Product
+
 def product_detail(request):
     product = Product.objects.first()  
     context = {
-        'name': product.name,
-        'description': product.description,
-        'price': product.price,
-        'type': product.type,
-        'sound_profile': product.sound_profile,
-        'image_url': product.image.url,  
+        'product': product 
     }
     return render(request, 'main.html', context)
+
 
 def about_app(request):
     context = {

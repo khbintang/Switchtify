@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ name }} - Product Details</title>
+    <title>{{ product.name }} - Product Details</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,33 +12,30 @@
             padding: 0;
         }
 
+        /* Header styles */
         .header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 15px;
         }
 
-        .header h1 {
-            margin: 0;
+        .header .store-name {
             font-size: 1.5em;
+            font-weight: bold;
         }
 
-        .header nav {
+        .header .menu {
             display: flex;
             gap: 15px;
         }
 
-        .header a {
-            color: #fff;
+        .header .menu a {
+            color: white;
             text-decoration: none;
-            font-size: 1em;
-        }
-
-        .header a:hover {
-            text-decoration: underline;
+            font-size: 1.1em;
         }
 
         .container {
@@ -49,7 +46,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        h2 {
+        h1 {
             font-size: 2.5em;
             color: #333;
         }
@@ -82,40 +79,48 @@
             font-style: italic;
             color: #2980b9;
         }
+
+        /* Footer styles */
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+        }
     </style>
 </head>
 <body>
-    <header class="header">
+    <!-- Header -->
+    <div class="header">
         <div class="store-name">SWITCHTIFY</div>
-        <nav>
+        <div class="menu">
             <a href="#">Browse</a>
             <a href="#">Cart</a>
             <a href="#">Contact</a>
-        </nav>
-    </header>
+        </div>
+    </div>
 
+    <!-- Main content -->
     <div class="container">
-        <h2>{{ name }}</h2>
-        <img src="{{ image_url }}" alt="{{ name }}">
-
+        <h1>{{ product.name }}</h1>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        
         <h5>Description:</h5>
-        <p>{{ description }}</p>
+        <p>{{ product.description }}</p>
 
         <h5>Price:</h5>
-        <p class="price">{{ price }}</p>
+        <p class="price">{{ product.price }}</p>
 
         <h5>Type:</h5>
-        <p class="type">{{ type }}</p>
-
-        
+        <p class="type">{{ product.type }}</p>
 
         <h5>Sound Profile:</h5>
-        <p>{{ sound_profile }}</p>
-        <!-- Add the student name and class at the bottom -->
-        <div class="footer">
-            <p>Created by: Khairul Bintang - PBP F</p>
-        </div>
+        <p>{{ product.sound_profile }}</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        Created by Khairul Bintang - PBP F
     </div>
 </body>
 </html>
-    
