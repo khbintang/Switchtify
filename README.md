@@ -102,6 +102,10 @@ Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
 
  - [ x ]Access the four URLs in point 2 using Postman, take screenshots of the results in Postman, and add them to README.md
   - Merequest pada Postman dengan URL XML
+    ![image](https://github.com/user-attachments/assets/80efb17c-1e55-4e8f-ae06-a23e941126be)
+   
   - Merequest pada Postman dengan URL JSON
+    ![image](https://github.com/user-attachments/assets/779f77a9-f65c-4e9e-8c5d-6fe064d11bf4)
+
 
 - [ x ] Perform add-commit-push to GitHub.
