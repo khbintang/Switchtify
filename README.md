@@ -76,3 +76,32 @@ Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
 
   - Mengapa model pada Django disebut sebagai ORM?
   Model pada Django disebut ORM (Object-Relational Mapping) karena berfungsi menghubungkan objek Python dengan tabel database. Dengan ORM, kita bisa mengelola data database menggunakan metode Python tanpa perlu menulis SQL secara manual.
+
+ - [ x ] Create a form input to add a model object to  the previous app.
+  - Membuat base html terlebih dahulu dan menyesuaikan dengan struktur project Django saya
+  - Mengedit TEMPLATES pada settings.py 
+  - Menyesuaikan main.html agar memakai base.html sebagai template
+  - Membuat forms.py dan mengisinya dengan fields Product saya
+  - Membuat fungsi create_products pada views.py 
+  - Membuat create_product.html dan mengextend ke base.html
+  - Melengkapi main.html untuk mendisplay Add New Product dan tombol untuk pergi ke page tersebut
+  - Run server dan mengecek pekerjaan
+
+ - [ x ] Add 4 views to view the added objects in XML, JSON, XML by ID, and JSON by ID formats.
+  - Menambahkan fungsi  show_XML dan show_JSON dengan paramater request dan show_XML_by_id dan show_JSON_by_id dengan parameter request dan id dan menambahkan returnnya sesuai dengan tipe datanya dalam views.py
+
+ - [ x ] Create URL routing for each of the views added in point 2.
+  - Menambahkan path untuk tiap fungsi diatas pada urls.py
+
+ - [ x ]Answer the following questions in README.md in the root folder.
+ - Explain why we need data delivery in implementing a platform.
+ - In your opinion, which is better, XML or JSON? Why is JSON more popular than XML?
+ - Explain the functional usage of is_valid() method in Django forms. Also explain why we need the method in forms.
+ - Why do we need csrf_token when creating a form in Django? What could happen if we did not use csrf_token on a Django form? How could this be leveraged by an attacker?
+ - Explain how you implemented the checklist above step-by-step (not just following the tutorial).
+
+ - [ x ]Access the four URLs in point 2 using Postman, take screenshots of the results in Postman, and add them to README.md
+  - Merequest pada Postman dengan URL XML
+  - Merequest pada Postman dengan URL JSON
+
+- [ x ] Perform add-commit-push to GitHub.

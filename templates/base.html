@@ -5,30 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Switchtify{% endblock %}</title>
     {% block meta %}{% endblock meta %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
     <!-- Header -->
-    <div class="header">
-        <div class="store-name">SWITCHTIFY</div>
-        <div class="menu">
-            <a href="#">Browse</a>
-            <a href="#">Cart</a>
-            <a href="#">Contact</a>
-        </div>
-    </div>
+    <header style="background-color: #333; color: #fff; padding: 10px; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-size: 24px;">SWITCHTIFY</div>
+        <nav>
+            <a href="#" style="color: #fff; text-decoration: none; padding: 0 15px;">Browse</a>
+            <a href="#" style="color: #fff; text-decoration: none; padding: 0 15px;">Cart</a>
+            <a href="#" style="color: #fff; text-decoration: none; padding: 0 15px;">Contact</a>
+        </nav>
+    </header>
 
     <!-- Main content block -->
-    <div class="container">
+    <main style="padding: 20px;">
         {% block content %}
         <!-- This is where child templates will insert their content -->
         {% endblock content %}
-    </div>
+    </main>
 
     <!-- Footer -->
-    <div class="footer">
+    <footer style="background-color: #333; color: #fff; text-align: center; padding: 10px;">
         Created by Khairul Bintang - PBP F
-    </div>
+    </footer>
 </body>
 </html>

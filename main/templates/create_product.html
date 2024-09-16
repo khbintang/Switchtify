@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
 
+{% block title %}Add New Product{% endblock %}
+
 {% block content %}
-<h1>Add New Product</h1>
+<div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); max-width: 600px; margin: 0 auto;">
+    <h1>Add New Product</h1>
 
-<form method="POST">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}  <!-- Ensure that form.as_table is correctly rendered -->
-    <tr>
-      <td></td>
-      <td>
-        <input type="submit" value="Add Product" />
-      </td>
-    </tr>
-  </table>
-</form>
-
+    <form method="POST">
+      {% csrf_token %}
+      <table style="width: 100%; border-collapse: collapse;">
+        {{ form.as_table }}
+        <tr>
+          <td></td>
+          <td>
+            <input type="submit" value="Add Product" style="background-color: #5cb85c; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 16px;" />
+          </td>
+        </tr>
+      </table>
+    </form>
+</div>
 {% endblock %}
