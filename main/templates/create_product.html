@@ -1,11 +1,12 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+
 {% block content %}
 <h1>Add New Product</h1>
 
 <form method="POST">
   {% csrf_token %}
   <table>
-    {{ form.as_table }}
+    {{ form.as_table }}  <!-- Ensure that form.as_table is correctly rendered -->
     <tr>
       <td></td>
       <td>

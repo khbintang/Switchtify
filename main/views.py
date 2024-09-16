@@ -11,15 +11,18 @@ def product_detail(request):
     }
     return render(request, 'main.html', context)
 
+
 def create_product(request):
-    form = ProductForm(request.POST or None)
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main:product_detail')  
+    else:
+        form = ProductForm()
+    
+    return render(request, 'create_product.html', {'form': form})
 
-    if form.is_valid() and request.method == "POST":
-        form.save()
-        return redirect('main:show_main')
-
-    context = {'form': form}
-    return render(request, "create_product.html", context)
 
 def show_xml(request):
     data = Product.objects.all()
