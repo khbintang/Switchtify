@@ -95,10 +95,22 @@ Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
 
  - [ x ]Answer the following questions in README.md in the root folder.
  - Explain why we need data delivery in implementing a platform.
+   Data delivery is needed in a platform to so that there can be  communication and data exchange ensuring that  
+   information flows smoothly and can be processed or acted upon in real-time.
+   
  - In your opinion, which is better, XML or JSON? Why is JSON more popular than XML?
+   JSON is more popular than XML due to its simpler structure and better performance in web communication.
+  
  - Explain the functional usage of is_valid() method in Django forms. Also explain why we need the method in forms.
+   It checks whether the form data meets the validation rules defined for the form because it is necessary to ensure that only valid data is processed and 
+   stored
+   
  - Why do we need csrf_token when creating a form in Django? What could happen if we did not use csrf_token on a Django form? How could this be leveraged by an attacker?
+    The csrf_token in Django forms helps stop cross-site request forgery (CSRF) attacks by making sure that form submissions are from trusted users. Without 
+   it, an attacker could trick users into sending harmful requests, which could lead to sensitive data being exposed
+   
  - Explain how you implemented the checklist above step-by-step (not just following the tutorial).
+   already stated in each checkpoints
 
  - [ x ]Access the four URLs in point 2 using Postman, take screenshots of the results in Postman, and add them to README.md
   - Merequest pada Postman dengan URL XML
