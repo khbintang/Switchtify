@@ -1,3 +1,4 @@
+import os
 """
 Django settings for Switchtify project.
 
@@ -24,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5!yn01wg!r-=m_l8&ch#6eprc69p6nc77=+mz056i_$9!-xlwc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+PRODUCTION = os.getenv("PRODUCTION", False)
+DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "khairul-bintang-switchtify.pbp.cs.ui.ac.id"]
 
