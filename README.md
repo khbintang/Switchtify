@@ -121,3 +121,62 @@ Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
 
 
 - [ x ] Perform add-commit-push to GitHub.
+
+- [ X ] **Implement** the register, login, and logout functions so that the user can access the application freely.
+        - Mengimport UserCreationForm dan messages dalam views.py
+        - Menambahkan fungsi register
+        - Membuat register.html 
+        - Mengimport register kedalam views
+        - Menambahkan path register ke url patters
+        - Import autenthicate, login dan AuthenticationForm
+        - Add fungsi login_user
+        - Buat login.html
+        - Mengimport login_user kedalam views dan menambahkan pathnya
+        - Mengimport logout
+        - Membuat fungsi logout_user
+        - Menglogin login_requred
+        - Membuat agar main page hanay dapat diakese dari client yang sudah logged in
+        - Import HttpResponseRedirect, reverse, and datetime di paling atas views.py
+        - Mengganti if form.isvlaid()
+        - Menambahkan     'last_login': request COOKIES['last_login'] di dalam product_detail
+        - Mengedit kembali logout_user
+        - Menambahkan suatu potongan kode dalan main.html
+        - Membuat koneksi dari model ke user model dengan import user dan menambahkan potongan kode yang mengconnect modelnya ke user 
+        - Memodifikasi create_product agar prevent Django secara langsung menyimpna objek-objek dari form ke database
+        - mengubah value dari products dari views.py
+        - Melakukan migrasi
+        - Menginput 1 1 1 ke pesan error dan migrasi
+        - menambahkan import os dan mengganti variabel debug
+      
+
+- [ X ] **Create two user accounts** with three dummy data entries each. Each account should be able to access the data locally.
+ - Menbuat akun dengan nama khairul.bintang
+ - Membuat produk dalam akun tersebut
+ - logout dan membuat akun baru dalam nama biggestofman
+ - mengecek apakah produk dari akun lain ada atau tidak
+- [ X ] **Connect the models** `Product` and `User`.
+ - Dengan import user dan menambahkan potongan kode dalam models.py 
+ - Memodifikasi views.py di main
+- [ X ] **Display logged-in user details** such as `username`, and apply cookies like `last_login` to the application's main page.
+ - Mengubah value dari products dengan mengfilter semua produk dan hanya mengambil product dimana filed user diisi dengan objek user yang sesuai dari user logged-innnya 
+- [ X ] **Answer the following questions** below:
+  1. What is the difference between HttpResponseRedirect() and redirect()?
+  HttpResponseRedirect() is a low-level way to redirect to a URL, while redirect() is a shortcut that handles URL paths or view names directly.
+
+  2. Explain how the MoodEntry model is linked with User.
+  The MoodEntry model links with User using a ForeignKey, allowing each mood entry to be associated with a specific user.
+
+  3. What is the difference between authentication and authorization?
+     - What happens when a user logs in?
+     When a user logs in, Django checks their credentials and creates a session.
+     - How does Django implement these two concepts?
+     Django handles authentication with the auth system and permissions for authorization.
+
+  4. How does Django remember logged-in users?
+  Django remembers logged-in users by storing a session ID in a cookie.
+     - Explain other uses of cookies and whether all cookies are safe to use.
+     Sessions are also used to track other user-related data across requests.
+
+  5. Explain the implementation process of the checklist step-by-step (apart from following the tutorial). Sudah ada di tiap checkpoint diatas
+
+- [ X ]  Perform add -commit-push to Github
