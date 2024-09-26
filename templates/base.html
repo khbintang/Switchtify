@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Switchtify{% endblock %}</title>
-    {% block meta %}{% endblock meta %}
+    
+    {% block meta %}
+    <!-- Meta tags for responsive design -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock meta %}
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
+<body class="font-sans bg-gray-100">
     <!-- Header -->
-    <header style="background-color: #333; color: #fff; padding: 10px; display: flex; justify-content: space-between; align-items: center;">
-        <div style="font-size: 24px;">SWITCHTIFY</div>
+    <header class="bg-gray-900 text-white p-4 flex justify-between items-center">
+        <div class="text-2xl font-bold">SWITCHTIFY</div>
         <nav>
-            <a href="#" style="color: #fff; text-decoration: none; padding: 0 15px;">Browse</a>
-            <a href="#" style="color: #fff; text-decoration: none; padding: 0 15px;">Cart</a>
-            <a href="#" style="color: #fff; text-decoration: none; padding: 0 15px;">Contact</a>
+            <a href="#" class="text-white no-underline px-4">Browse</a>
+            <a href="#" class="text-white no-underline px-4">Cart</a>
+            <a href="#" class="text-white no-underline px-4">Contact</a>
         </nav>
     </header>
 
     <!-- Main content block -->
-    <main style="padding: 20px;">
+    <main class="p-5">
         {% block content %}
         <!-- This is where child templates will insert their content -->
         {% endblock content %}
     </main>
 
     <!-- Footer -->
-    <footer style="background-color: #333; color: #fff; text-align: center; padding: 10px;">
+    <footer class="bg-gray-900 text-white text-center p-4">
         Created by Khairul Bintang - PBP F
     </footer>
 </body>
