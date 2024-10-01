@@ -1,3 +1,4 @@
+### TUGAS 2
 - [ X ] Membuat sebuah proyek Django baru.
  1. Membuat repositori baru di github dengan nama Switchtify
  2. Membuat direktori lokal dan menambahkan file README.md dan mengisinya dengan checklist-checklist
@@ -77,6 +78,7 @@ Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
   - Mengapa model pada Django disebut sebagai ORM?
   Model pada Django disebut ORM (Object-Relational Mapping) karena berfungsi menghubungkan objek Python dengan tabel database. Dengan ORM, kita bisa mengelola data database menggunakan metode Python tanpa perlu menulis SQL secara manual.
 
+### TUGAS 3
  - [ x ] Create a form input to add a model object to  the previous app.
   - Membuat base html terlebih dahulu dan menyesuaikan dengan struktur project Django saya
   - Mengedit TEMPLATES pada settings.py 
@@ -122,6 +124,7 @@ Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
 
 - [ x ] Perform add-commit-push to GitHub.
 
+### TUGAS 4
 - [ X ] **Implement** the register, login, and logout functions so that the user can access the application freely.
         - Mengimport UserCreationForm dan messages dalam views.py
         - Menambahkan fungsi register
@@ -180,3 +183,59 @@ Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
   5. Explain the implementation process of the checklist step-by-step (apart from following the tutorial). Sudah ada di tiap checkpoint diatas
 
 - [ X ]  Perform add -commit-push to Github
+
+### TUGAS 5
+- [ X ] Implement functions to delete and edit products.
+  - Integrate Tailwind into css first
+  - Add the edit_product function in views.py
+  - Change the data structure from int to id
+  - Perform migrations again after the data changes
+  - Create edit_product.html in main/templates 
+  - Importing the edit_product function to urls.py and adding the URL path
+  - Doing the same thing again for delete_mood feature
+  - Adding the delete and edit button for each product in main.html
+
+- [ X ] Customize the design of the HTML templates created in previous assignments using CSS or a CSS framework (such as Bootstrap, Tailwind, Bulma) with the following conditions:
+  - [ X ] Customize the login, register, and add product pages to be as attractive as possible.
+    - Create a new login page by changing the login.html and changing the login button to the colour black
+    - Styling the register page by changing the register.html and changing the register button to the colour black
+    - Styling the add product page with the same style
+    - Configuring the static files in settings.py by changing the STATIC_ROOT, STATICFILESS_DIRS, and STATIC_URLS
+  - [ X ] Customize the product list page to be more attractive and responsive:
+    - [ x ] If there are no products saved in the application, the product list page will display an image and a message that no products are registered.
+    - Create a very-sad.png in static/image and adding it to the html
+    - [ X ] If there are products saved, the product list page will display details of each product using cards (Note: Must not be exactly the same as the design in the Tutorial!).
+    - Did not change much from the previous assingment for the design
+  - [ X ] For each product card, create two buttons to edit and delete the product on that card!
+    - Adding the edit and delete button for each product card by connecting the function from views.py and adding the url path to urls.py and creating the button in html
+  - [ X ]  Create a navigation bar (navbar) for the features in the application that is responsive to different device sizes, especially mobile and desktop.
+  - Adding navigation bar with the the feature search product
+
+- [ X ] Answer the following questions in README.md in the root folder (please modify the README.md you have created before; add subheadings for each assignment).
+  1. If there are multiple CSS selectors for an HTML element, the priority order follows these rules:
+    1. Inline Styles (`style` attribute in the HTML tag) have the highest priority.
+    2. ID Selectors (`#elementID`) come next.
+    3. Class Selectors, Attribute Selectors, and Pseudo-Class Selectors (`.className`, `[attribute=value]`, `:hover`) follow.
+    4. Element Selectors (`elementTag`) and Pseudo-Element Selectors (`::before`, `::after`) have the lowest priority.
+    5. Important rule (`!important`) overrides all other selector types.
+
+  2. Responsive design is crucial in web application development because it ensures that web applications provide an optimal viewing experience across a wide range of devices (desktops, tablets, smartphones). Without responsive design, users may have difficulty navigating or interacting with an application, especially on smaller screens like on our phones.
+    Examples of applications:
+    - Implemented responsive design: Google , Twitter, Instagram .
+    - Not implemented responsive design: Aren.cs.ui.ac.id.
+
+  3. 
+    - Margin: The space outside the element's border. It defines the distance between elements. We can implement it by setting margin values using margin-top, margin-right, margin-bottom, margin-left, or the shorthand margin.
+    - Border: The line surrounding the padding and content, giving the element a defined boundary.We can set borders using border-width, border-style, border-color, or the shorthand border.
+    - Padding: The space between the content of the element and its border.We can set padding values using padding-top, padding-right, padding-bottom, padding-left, or the shorthand padding.
+
+  4. 
+    - Flexbox:
+      Flexbox is a one-dimensional layout model used for laying out items in a row or a column. It excels at distributing space within an item, aligning items, and handling dynamic sizes. We can use flexbox to create navigation bars, centerig items horiozontally or vertically, and aling buttons.
+
+    - Grid Layout:
+      Grid is a two-dimensional layout system, meaning it works in both rows and columns. It allows for precise control over the positioning and sizing of items, making it ideal for more complex layouts where items need to span multiple rows or columns. We can use Grid layout to create a page layout for web pages, create a responsive design for different screen sizes or others.
+
+  5.  Explain how you implemented the checklist above step-by-step (not just following the tutorial)!
+    Already at each checkpoint
+-[ X ] Perform add-commit-push to GitHub.

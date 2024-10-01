@@ -2,7 +2,7 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import reverse
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product
 from .forms import ProductForm
 from django.http import HttpResponse
@@ -12,8 +12,13 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+import logging
+import os
+from django.conf import settings
 
-@login_required(login_url='/login')
+logger = logging.getLogger(__name__)
 
 @login_required(login_url='/login')
 def product_detail(request):
@@ -25,17 +30,16 @@ def product_detail(request):
     return render(request, 'main.html', context)
 
 def create_product(request):
-    form = ProductForm(request.POST or None)
-    
-    if form.is_valid() and request.method == "POST":
-        product = form.save(commit=False)  
-        product.user = request.user        
-        product.save()                     
-        return redirect('main:product_detail')
-    context = {'form': form}
-    return render(request, 'create_product.html', context)
-
-
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.user = request.user
+            product.save()
+            return redirect('main:product_detail')
+    else:
+        form = ProductForm()
+    return render(request, 'create_product.html', {'form': form})
 
 def show_xml(request):
     data = Product.objects.all()
@@ -96,13 +100,17 @@ def logout_user(request):
     return response
 
 def edit_product(request, id):
-    products = Product.objects.get(pk = id)
+    product = get_object_or_404(Product, id=id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('main:product_detail')
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'edit_product.html', {'form': form, 'product': product})
 
-    form = ProductForm(request.POST or None, instance=products)
-
-    if form.is_valid() and request.method == "POST":
-        form.save()
-        return HttpResponseRedirect(reverse('main:show_main'))
-
-    context = {'form': form}
-    return render(request, "edit_product.html", context)
+def delete_product(request, id):
+    products = Product.objects.get(pk=id)
+    products.delete()  
+    return HttpResponseRedirect(reverse('main:product_detail'))  

@@ -1,58 +1,98 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-    Products - Product List
-{% endblock title %}
+{% block meta %}
+<title>Products - Product List</title>
+{% endblock meta %}
 
 {% block content %}
-    <h1>Product List</h1>
+    <!-- Tambahkan gambar sebagai background -->
+    <style>
+        body {
+            background-image: linear-gradient(to bottom, rgba(17, 24, 39, 1), rgba(17, 24, 39, 0.1)), url("{% static 'image/background.jpg' %}");
+            background-size: cover; /* Agar gambar memenuhi seluruh layar */
+            background-position: center;
+            background-attachment: fixed; /* Gambar tetap saat scroll */
+            background-repeat: no-repeat; /* Jangan ulangi gambar */
+        }
 
-    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-        {% for product in products %}
-        <div style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; width: 250px;">
-            <h2>{{ product.name }}</h2>
-            {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%;">
-            {% endif %}
-            <table>
-                <tr>
-                    <th>Description:</th>
-                    <td>{{ product.description }}</td>
-                </tr>
-                <tr>
-                    <th>Price:</th>
-                    <td class="price">{{ product.price }}</td>
-                </tr>
-                <tr>
-                    <th>Type:</th>
-                    <td class="type">{{ product.type }}</td>
-                </tr>
-                {% if product.sound_profile %}
-                <tr>
-                    <th>Sound Profile:</th>
-                    <td>{{ product.sound_profile }}</td>
-                </tr>
-                {% endif %}
-                <tr>
-                    <td colspan="2">
-                        <a href="{% url 'main:edit_product' product.pk %}">
-                            <button>Edit</button>
+        .content-wrapper {
+            background-color: rgba(255, 255, 255, 0.9); /* Memberikan efek transparan pada konten */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <!-- Navbar section -->
+    {% include 'navbar.html' %}
+
+    <!-- Main product list section -->
+    <div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen flex flex-col">
+        <h1 class="text-2xl font-bold mb-6 text-white">Product List</h1>
+        <div class="p-2 mb-6 relative">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Loop through products -->
+                {% for product in products %}
+                <div class="content-wrapper">
+                    <h2 class="text-lg font-semibold mb-2">{{ product.name }}</h2>
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-40 object-cover rounded-md mb-4">
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+                    <table class="w-full text-left mb-4">
+                        <tr>
+                            <th class="text-gray-600">Description:</th>
+                            <td class="text-gray-800">{{ product.description }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-gray-600">Price:</th>
+                            <td class="text-gray-800">{{ product.price }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-gray-600">Type:</th>
+                            <td class="text-gray-800">{{ product.type }}</td>
+                        </tr>
+                        {% if product.sound_profile %}
+                        <tr>
+                            <th class="text-gray-600">Sound Profile:</th>
+                            <td class="text-gray-800">{{ product.sound_profile }}</td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                    <div class="flex justify-between">
+                        <a href="{% url 'main:edit_product' product.pk %}" class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                            Edit
                         </a>
-                    </td>
-                </tr>
-            </table>
+                        <a href="{% url 'main:delete_product' product.pk %}" onclick="return confirm('Are you sure you want to delete this product?');" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                            Delete
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <!-- No products available: Show the sad image -->
+                <div class="flex flex-col items-center justify-center text-center py-12">
+                    <img src="{% static 'image/very-sad.png' %}" alt="No Products" class="w-64 h-64">
+                    <p class="text-gray-600 mt-4 font-semibold text-lg">Oops! No products available at the moment.</p>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        {% empty %}
-            <p>No products available yet.</p>
-        {% endfor %}
+
+        <!-- Add new product button -->
+        <div class="flex justify-end mb-6">
+            <a href="{% url 'main:create_product' %}" class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                Add New Product
+            </a>
+        </div>
+
+        <!-- Footer: Last login session and logout -->
+        <div class="flex justify-between mt-4">
+            <h5 class="text-gray-600">Last login session: {{ last_login }}</h5>
+            <a href="{% url 'main:logout' %}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                Logout
+            </a>
+        </div>
     </div>
-
-    <a href="{% url 'main:create_product' %}" class="btn btn-primary">Add New Product</a>
-
-    <a href="{% url 'main:logout' %}">
-        <button>Logout</button>
-    </a>
-
-    <h5>Last login session: {{ last_login }}</h5>
 {% endblock content %}

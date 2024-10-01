@@ -1,22 +1,33 @@
 {% extends 'base.html' %}
 
-{% block title %}Add New Product{% endblock %}
-
 {% block content %}
-<div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); max-width: 600px; margin: 0 auto;">
-    <h1>Add New Product</h1>
-
-    <form method="POST">
-      {% csrf_token %}
-      <table style="width: 100%; border-collapse: collapse;">
-        {{ form.as_table }}
-        <tr>
-          <td></td>
-          <td>
-            <input type="submit" value="Add Product" style="background-color: #5cb85c; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-size: 16px;" />
-          </td>
-        </tr>
-      </table>
-    </form>
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-lg">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h2 class="text-2xl font-bold mb-6 text-center">Create a New Product</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                        </label>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <p class="text-gray-600 text-xs italic">{{ field.help_text }}</p>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <p class="text-red-500 text-xs italic">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        Create Product
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
