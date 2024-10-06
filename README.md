@@ -227,7 +227,7 @@ Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
   3. 
     - Margin: The space outside the element's border. It defines the distance between elements. We can implement it by setting margin values using margin-top, margin-right, margin-bottom, margin-left, or the shorthand margin.
     - Border: The line surrounding the padding and content, giving the element a defined boundary.We can set borders using border-width, border-style, border-color, or the shorthand border.
-    - Padding: The space between the content of the element and its border.We can set padding values using padding-top, padding-right, padding-bottom, padding-left, or the shorthand padding.
+    - Padding: The space between the content of the element and its border.We can set padding values using padding-top, padding-right, padding-bottom, padding-left, or the shorthand padding .  . 
 
   4. 
     - Flexbox:
