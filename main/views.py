@@ -22,10 +22,12 @@ logger = logging.getLogger(__name__)
 
 @login_required(login_url='/login')
 def product_detail(request):
-    products = Product.objects.filter(user=request.user) 
+    products = Product.objects.filter(user=request.user)
+    form = ProductForm()  # Tambahkan ini
     context = {
-        'products': products,          
-        'last_login': request.COOKIES.get('last_login'),  
+        'products': products,
+        'last_login': request.COOKIES.get('last_login'),
+        'form': form,  # Tambahkan ini
     }
     return render(request, 'main.html', context)
 
@@ -95,7 +97,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    response = HttpResponseRedirect(reverse('main:login'))
+    response = HttpResponseRedirect(reverse('main:product_detail'))
     response.delete_cookie('last_login')
     return response
 
@@ -113,4 +115,38 @@ def edit_product(request, id):
 def delete_product(request, id):
     products = Product.objects.get(pk=id)
     products.delete()  
-    return HttpResponseRedirect(reverse('main:product_detail'))  
+    return HttpResponseRedirect(reverse('main:product_detail'))
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .forms import ProductForm
+
+@csrf_exempt
+def create_product_ajax(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.user = request.user
+            product.save()
+            return JsonResponse({
+                'status': 'success',
+                'product': {
+                    'id': product.id,
+                    'name': product.name,
+                    'description': product.description,
+                    'price': str(product.price),
+                    'type': product.type,
+                    'sound_profile': product.sound_profile,
+                    'image': product.image.url if product.image else '',
+                }
+            })
+        else:
+            errors = {field: error[0] for field, error in form.errors.items()}
+            return JsonResponse({'status': 'error', 'errors': errors})
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
+@login_required(login_url='/login')
+def get_product_json(request):
+    products = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', products), content_type="application/json")
