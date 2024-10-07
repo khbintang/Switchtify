@@ -242,7 +242,7 @@ Response to Client (Mengirimkan tampilan HTML yang dirender ke klien)
 
 # TUGAS 6
 
-- [x] Modify the previously created assignment 5 to use AJAX.
+- [x] Modify the previously created assignment 5 to use AJAX. . 
 
 Step-by-step:
 1. Reviewed the existing code from assignment 5.
