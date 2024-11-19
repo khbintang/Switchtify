@@ -17,6 +17,9 @@ from django.core.files.base import ContentFile
 import logging
 import os
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+import json
+from django.http import JsonResponse
 
 logger = logging.getLogger(__name__)
 
@@ -150,3 +153,31 @@ def create_product_ajax(request):
 def get_product_json(request):
     products = Product.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', products), content_type="application/json")
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        product = Product.objects.create(
+            user=request.user,
+            name=data["name"],
+            description=data["description"],
+            price=data["price"],
+            type=data["type"],
+            sound_profile=data["sound_profile"],
+            image=data.get("image")  # Pastikan untuk menangani file gambar jika ada
+        )
+        return JsonResponse({
+            "status": "success",
+            "product": {
+                "id": str(product.id),
+                "name": product.name,
+                "description": product.description,
+                "price": str(product.price),
+                "type": product.type,
+                "sound_profile": product.sound_profile,
+                "image": product.image.url if product.image else '',
+            }
+        }, status=201)
+    else:
+        return JsonResponse({"status": "error"}, status=400)

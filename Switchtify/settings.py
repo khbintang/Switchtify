@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-5!yn01wg!r-=m_l8&ch#6eprc69p6nc77=+mz056i_$9!-xlwc
 PRODUCTION = os.getenv("PRODUCTION", False)
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "khairul-bintang-switchtify.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "khairul-bintang-switchtify.pbp.cs.ui.ac.id", "10.0.2.2"]
 
 
 # Application definition
@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'django.contrib.humanize',
+    'authentication',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,9 +55,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Switchtify.urls'
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
 
 TEMPLATES = [
     {
@@ -137,4 +147,3 @@ STORE_NAME = 'SWITCHTIFY'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-

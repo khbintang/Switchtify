@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import product_detail, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
+from .views import product_detail, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id, about_app, register, login_user, logout_user, edit_product, delete_product, create_product_ajax, create_product_flutter, get_product_json
 from main.views import register
 from main.views import login_user
 from main.views import logout_user
@@ -29,6 +29,7 @@ urlpatterns = [
     path('create-product-ajax/', create_product_ajax, name='create_product_ajax'),
     path('get-product/', get_product_json, name='get_product_json'),
     path('create-product-ajax/', create_product_ajax, name='create_product_ajax'),
+    path('create-flutter/', create_product_flutter, name='create_product_flutter'),
     # path('', views.home, name='home'),
     # path('cart/', views.cart, name='cart'),
     # path('contact/', views.contact, name='contact'),
